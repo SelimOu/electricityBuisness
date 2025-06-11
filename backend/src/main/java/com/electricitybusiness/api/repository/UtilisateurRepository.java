@@ -12,7 +12,6 @@ import java.util.Optional;
  */
 @Repository
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
-    
     Optional<Utilisateur> findByPseudo(String pseudo);
     
     Optional<Utilisateur> findByAdresseMail(String adresseMail);
@@ -20,4 +19,4 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> 
     boolean existsByPseudo(String pseudo);
     
     boolean existsByAdresseMail(String adresseMail);
-} 
+}

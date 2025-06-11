@@ -4,31 +4,71 @@
 ### Variables
 @baseUrl = http://localhost:8080
 @contentType = application/json
+@authToken = Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ3NDA0LCJleHAiOjE3NDk3MzM4MDR9.VmuMY0hCq5--rKxe-Nxb--Zub-mz6stz7XCCH4I0cXk
+
+
+# ===============================
+# AUTHENTIFICATION
+# ===============================
+
+### Inscription d'un nouvel utilisateur (route publique)
+POST {{baseUrl}}/api/auth/register
+Content-Type: {{contentType}}
+
+{
+    "pseudo": "jean",
+    "nomUtilisateur": "Dupont",
+    "prenom": "Jean",
+    "adresseMail": "jean@email.com",
+    "motDePasse": "motdepasse123",
+    "role": "CLIENT",
+    "dateDeNaissance": "1990-05-15",
+    "lieu": {
+        "numLieu": 1
+    }
+}
+
+### Login - Obtenir un token JWT
+POST {{baseUrl}}/api/auth/login
+Content-Type: {{contentType}}
+
+{
+    "pseudo": "jean",
+    "password": "motdepasse123"
+}
+
+### Test d'authentification avec un token invalide
+GET {{baseUrl}}/api/utilisateurs
+Authorization: Bearer invalid_token
 
 # ===============================
 # LIEUX - Tests CRUD
 # ===============================
 
-### 1. Créer un lieu
+### 1. Créer un lieu (authentifié)
 POST {{baseUrl}}/api/lieux
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
 
 {
-  "instructions": "Parking principal du centre commercial"
+    "instructions": "Parking principal du centre commercial"
 }
 
-### 2. Récupérer tous les lieux
+### 2. Récupérer tous les lieux avec authentification
 GET {{baseUrl}}/api/lieux
+Authorization: {{authToken}}
 
 ### 3. Récupérer un lieu par ID
 GET {{baseUrl}}/api/lieux/1
+Authorization: {{authToken}}
 
 ### 4. Mettre à jour un lieu
 PUT {{baseUrl}}/api/lieux/1
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
 
 {
-  "instructions": "Parking principal du centre commercial - Accès 24h/24"
+    "instructions": "Parking principal du centre commercial - Accès 24h/24"
 }
 
 ### 5. Supprimer un lieu
@@ -120,8 +160,9 @@ Content-Type: {{contentType}}
 }
 
 
-### 11. Récupérer tous les utilisateurs
+### 11. Récupérer tous les utilisateurs avec authentification
 GET {{baseUrl}}/api/utilisateurs
+Authorization: {{authToken}}
 
 ### 12. Récupérer un utilisateur par ID
 GET {{baseUrl}}/api/utilisateurs/1
@@ -388,4 +429,15 @@ Content-Type: {{contentType}}
 }
 
 ### 42. Supprimer une borne inexistante (404)
-DELETE {{baseUrl}}/api/bornes/999 
+DELETE {{baseUrl}}/api/bornes/999
+
+### 43. Test d'accès non autorisé (sans token)
+GET {{baseUrl}}/api/utilisateurs
+
+### 44. Test d'accès avec token expiré
+GET {{baseUrl}}/api/utilisateurs
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuLmR1cG9udCIsImlhdCI6MTcwOTI5MjQwMCwiZXhwIjoxNzA5Mjk2MDAwfQ.expired_signature
+
+### 45. Test de rafraîchissement du token
+POST {{baseUrl}}/api/auth/refresh
+Authorization: {{authToken}}

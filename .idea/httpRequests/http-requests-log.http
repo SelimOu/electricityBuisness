@@ -1,3 +1,450 @@
+POST http://localhost:8080/api/lieux
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ3NDA0LCJleHAiOjE3NDk3MzM4MDR9.VmuMY0hCq5--rKxe-Nxb--Zub-mz6stz7XCCH4I0cXk
+Content-Length: 64
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "instructions": "Parking principal du centre commercial"
+}
+
+<> 2025-06-11T151049.201.json
+
+###
+
+GET http://localhost:8080/api/lieux
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ3NDA0LCJleHAiOjE3NDk3MzM4MDR9.VmuMY0hCq5--rKxe-Nxb--Zub-mz6stz7XCCH4I0cXk
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-06-11T151044.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 57
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "password": "motdepasse123"
+}
+
+<> 2025-06-11T151004.200.txt
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 57
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "password": "motdepasse123"
+}
+
+<> 2025-06-11T150942.200.txt
+
+###
+
+GET http://localhost:8080/api/utilisateurs
+Authorization: Bearer invalid_token
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/api/utilisateurs
+Authorization: Bearer invalid_token
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/api/lieux
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ2NjM4LCJleHAiOjE3NDk3MzMwMzh9.w3BMbXltqxQuMiBvC_tcvrX2VWEemPxCgIQa3AO7Sm8
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-06-11T145951.200.json
+
+###
+
+GET http://localhost:8080/api/lieux
+Authorization: Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ2NjM4LCJleHAiOjE3NDk3MzMwMzh9.w3BMbXltqxQuMiBvC_tcvrX2VWEemPxCgIQa3AO7Sm8
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/api/lieux
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ2NjM4LCJleHAiOjE3NDk3MzMwMzh9.w3BMbXltqxQuMiBvC_tcvrX2VWEemPxCgIQa3AO7Sm8
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-06-11T145843.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 57
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "password": "motdepasse123"
+}
+
+<> 2025-06-11T145718.200.txt
+
+###
+
+GET http://localhost:8080/api/lieux/1
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ2Mzg2LCJleHAiOjE3NDk2NDc4MjZ9.Wu5uAuDQH1xSuxi0uzekn8oE0Zvw4iPOxNGAY-_U2ss
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/api/lieux
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ2Mzg2LCJleHAiOjE3NDk2NDc4MjZ9.Wu5uAuDQH1xSuxi0uzekn8oE0Zvw4iPOxNGAY-_U2ss
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/api/lieux/1
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ2Mzg2LCJleHAiOjE3NDk2NDc4MjZ9.Wu5uAuDQH1xSuxi0uzekn8oE0Zvw4iPOxNGAY-_U2ss
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 57
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "password": "motdepasse123"
+}
+
+<> 2025-06-11T145306.200.txt
+
+###
+
+GET http://localhost:8080/api/utilisateurs
+Authorization: Bearer invalid_token
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/api/lieux
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ2MzI1LCJleHAiOjE3NDk2NDc3NjV9.Hm660hDw3BHupaE55_3-qjFa4hx3J_9Ex_eXbJ4hxAI
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 57
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "password": "motdepasse123"
+}
+
+<> 2025-06-11T145205.200.txt
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 251
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "nomUtilisateur": "Dupont",
+    "prenom": "Jean",
+    "adresseMail": "jean@email.com",
+    "motDePasse": "motdepasse123",
+    "role": "CLIENT",
+    "dateDeNaissance": "1990-05-15",
+    "lieu": {
+        "numLieu": 1
+    }
+}
+
+<> 2025-06-11T145131.200.json
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 251
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "nomUtilisateur": "Dupont",
+    "prenom": "Jean",
+    "adresseMail": "jean@email.com",
+    "motDePasse": "motdepasse123",
+    "role": "CLIENT",
+    "dateDeNaissance": "1990-05-15",
+    "lieu": {
+        "numLieu": 1
+    }
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 67
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean.dupobbbnt",
+    "password": "motdepasse123"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 251
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "nomUtilisateur": "Dupont",
+    "prenom": "Jean",
+    "adresseMail": "jean@email.com",
+    "motDePasse": "motdepasse123",
+    "role": "CLIENT",
+    "dateDeNaissance": "1990-05-15",
+    "lieu": {
+        "numLieu": 1
+    }
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 265
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean.dupont",
+    "nomUtilisateur": "Dupont",
+    "prenom": "Jean",
+    "adresseMail": "jean.dupont@email.com",
+    "motDePasse": "motdepasse123",
+    "role": "CLIENT",
+    "dateDeNaissance": "1990-05-15",
+    "lieu": {
+        "numLieu": 1
+    }
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 67
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean.dupobbbnt",
+    "password": "motdepasse123"
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 64
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean.dupont",
+    "password": "motdepasse123"
+}
+
+###
+
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+Content-Length: 265
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean.dupont",
+    "nomUtilisateur": "Dupont",
+    "prenom": "Jean",
+    "adresseMail": "jean.dupont@email.com",
+    "motDePasse": "motdepasse123",
+    "role": "CLIENT",
+    "dateDeNaissance": "1990-05-15",
+    "lieu": {
+        "numLieu": 1
+    }
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 64
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean.dupont",
+    "password": "motdepasse123"
+}
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 64
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean.dupont",
+    "password": "motdepasse123"
+}
+
+###
+
+POST http://localhost:8080/api/utilisateurs
+Content-Type: application/json
+Content-Length: 316
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "pseudo": "jean.dupont",
+  "nomUtilisateur": "Dupont",
+  "prenom": "Jean",
+  "adresseMail": "jean.dupont@email.com",
+  "motDePasse": "motdepasse123",
+  "role": "CLIENT",
+  "dateDeNaissance": "1990-05-15",
+  "compteValide": true,
+  "banni": false,
+  "vehicule": "Tesla Model 3",
+  "lieu": {
+    "numLieu": 1
+  }
+}
+
+###
+
+GET http://localhost:8080/api/adresses
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
+GET http://localhost:8080/api/adresses
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-06-11T140758.200.json
+
+###
+
+GET http://localhost:8080/api/adresses
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-06-11T140757.200.json
+
+###
+
+GET http://localhost:8080/api/adresses
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-06-11T140755.200.json
+
+###
+
+GET http://localhost:8080/api/lieux
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-06-11T140753.200.json
+
+###
+
+GET http://localhost:8080/api/adresses
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+###
+
 GET http://localhost:8080/api/adresses
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
 Accept-Encoding: br, deflate, gzip, x-gzip
