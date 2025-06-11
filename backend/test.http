@@ -4,7 +4,7 @@
 ### Variables
 @baseUrl = http://localhost:8080
 @contentType = application/json
-@authToken = Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ3NDA0LCJleHAiOjE3NDk3MzM4MDR9.VmuMY0hCq5--rKxe-Nxb--Zub-mz6stz7XCCH4I0cXk
+@authToken = Bearer token_example
 
 
 # ===============================

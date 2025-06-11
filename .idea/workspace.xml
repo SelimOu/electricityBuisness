@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1045b9b4-0ac1-4a77-aad9-80cd8bf3e126" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/electricitybusiness/api/model/Utilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/electricitybusiness/api/model/Utilisateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/electricitybusiness/api/repository/UtilisateurRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/electricitybusiness/api/repository/UtilisateurRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/test.http" beforeDir="false" afterPath="$PROJECT_DIR$/backend/test.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,6 +80,11 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RunManager" selected="HTTP Request.test | 1. Créer un lieu (authentifié)">
@@ -135,7 +135,7 @@
       <workItem from="1749555983029" duration="308000" />
       <workItem from="1749556311496" duration="346000" />
       <workItem from="1749556675025" duration="4940000" />
-      <workItem from="1749645560461" duration="1866000" />
+      <workItem from="1749645560461" duration="3673000" />
     </task>
     <servers />
   </component>
