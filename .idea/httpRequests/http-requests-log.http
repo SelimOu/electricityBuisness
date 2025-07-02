@@ -1,3 +1,199 @@
+POST http://localhost:8080/api/auth/refresh
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzUwNzU2OTg1LCJleHAiOjE3NTA4NDMzODV9.igQGR1eMB-dTLvuvWYUvK13pdLyVFnibeLccBSoqbLI
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=6ce74a96-7785-44c3-b79f-55e984ed594b
+content-length: 0
+
+<> 2025-06-24T112412.401.json
+
+###
+
+DELETE http://localhost:8080/api/bornes/999
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=6ce74a96-7785-44c3-b79f-55e984ed594b
+content-length: 0
+
+###
+
+GET http://localhost:8080/api/utilisateurs
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=6ce74a96-7785-44c3-b79f-55e984ed594b
+
+###
+
+POST http://localhost:8080/api/auth/refresh
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzUwNzU2OTg1LCJleHAiOjE3NTA4NDMzODV9.igQGR1eMB-dTLvuvWYUvK13pdLyVFnibeLccBSoqbLI
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=6ce74a96-7785-44c3-b79f-55e984ed594b
+content-length: 0
+
+<> 2025-06-24T112357.401.json
+
+###
+
+GET http://localhost:8080/api/utilisateurs
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuLmR1cG9udCIsImlhdCI6MTcwOTI5MjQwMCwiZXhwIjoxNzA5Mjk2MDAwfQ.expired_signature
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=6ce74a96-7785-44c3-b79f-55e984ed594b
+
+###
+
+POST http://localhost:8080/api/auth/refresh
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzUwNzU2OTg1LCJleHAiOjE3NTA4NDMzODV9.igQGR1eMB-dTLvuvWYUvK13pdLyVFnibeLccBSoqbLI
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=6ce74a96-7785-44c3-b79f-55e984ed594b
+content-length: 0
+
+<> 2025-06-24T112343.401.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 57
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=f3aed2e6-b18b-4663-be1f-b8cb11ae75c9
+
+{
+    "pseudo": "jean",
+    "password": "motdepasse123"
+}
+
+<> 2025-06-24T112305.200.txt
+
+###
+
+GET http://localhost:8080/api/utilisateurs
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuLmR1cG9udCIsImlhdCI6MTcwOTI5MjQwMCwiZXhwIjoxNzA5Mjk2MDAwfQ.expired_signature
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=f3aed2e6-b18b-4663-be1f-b8cb11ae75c9
+
+###
+
+POST http://localhost:8080/api/auth/refresh
+Authorization: Bearer token_example
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=f3aed2e6-b18b-4663-be1f-b8cb11ae75c9
+content-length: 0
+
+###
+
+POST http://localhost:8080/api/auth/refresh
+Authorization: Bearer token_example
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=f3aed2e6-b18b-4663-be1f-b8cb11ae75c9
+content-length: 0
+
+###
+
+POST http://localhost:8080/api/auth/refresh
+Content-Type: application/json
+Content-Length: 158
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=f3aed2e6-b18b-4663-be1f-b8cb11ae75c9
+
+{
+    "pseudo": "jean"
+}
+
+# Note : Le cookie refreshToken sera automatiquement envoyé par le navigateur
+# car il a été défini comme HttpOnly lors du login
+
+<> 2025-06-24T111545.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 57
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "password": "motdepasse123"
+}
+
+<> 2025-06-24T111506.200.txt
+
+###
+
+POST http://localhost:8080/api/auth/refresh
+Content-Type: application/json
+Content-Length: 158
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Cookie: refreshToken=2656bd56-7f3d-4e38-9407-580349fea8e8
+
+{
+    "pseudo": "jean"
+}
+
+# Note : Le cookie refreshToken sera automatiquement envoyé par le navigateur
+# car il a été défini comme HttpOnly lors du login
+
+<> 2025-06-20T152726.200.json
+
+###
+
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+Content-Length: 57
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean",
+    "password": "motdepasse123"
+}
+
+<> 2025-06-20T152714.200.txt
+
+###
+
+POST http://localhost:8080/api/auth/refresh
+Content-Type: application/json
+Content-Length: 158
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+    "pseudo": "jean"
+}
+
+# Note : Le cookie refreshToken sera automatiquement envoyé par le navigateur
+# car il a été défini comme HttpOnly lors du login
+
+<> 2025-06-20T152705.401.json
+
+###
+
 POST http://localhost:8080/api/lieux
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzQ5NjQ3NDA0LCJleHAiOjE3NDk3MzM4MDR9.VmuMY0hCq5--rKxe-Nxb--Zub-mz6stz7XCCH4I0cXk
@@ -451,15 +647,6 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 <> 2025-06-11T102446.200.json
-
-###
-
-GET http://localhost:8080/api/adresses
-User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2025-06-11T102056.200.json
 
 ###
 

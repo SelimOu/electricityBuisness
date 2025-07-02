@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1045b9b4-0ac1-4a77-aad9-80cd8bf3e126" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2025-06-11T102056.200.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-client.cookies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/docker-compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/electricitybusiness/api/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/electricitybusiness/api/security/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/electricitybusiness/api/security/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/electricitybusiness/api/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/electricitybusiness/api/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/test.http" beforeDir="false" afterPath="$PROJECT_DIR$/backend/test.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,79 +54,84 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP Request.test | 1. Créer un lieu (authentifié).executor": "Run",
-    "HTTP Request.test | 1. Créer un lieu.executor": "Run",
-    "HTTP Request.test | 11. Récupérer tous les utilisateurs.executor": "Run",
-    "HTTP Request.test | 19. Récupérer tous les tarifs horaires.executor": "Run",
-    "HTTP Request.test | 2. Récupérer tous les lieux avec authentification.executor": "Run",
-    "HTTP Request.test | 2. Récupérer tous les lieux.executor": "Run",
-    "HTTP Request.test | 23. Récupérer tous les médias.executor": "Run",
-    "HTTP Request.test | 27. Récupérer toutes les réservations.executor": "Run",
-    "HTTP Request.test | 3. Récupérer un lieu par ID.executor": "Run",
-    "HTTP Request.test | 7. Récupérer toutes les adresses.executor": "Run",
-    "HTTP Request.test | Créer un autre utilisateur.executor": "Run",
-    "HTTP Request.test | Inscription d'un nouvel utilisateur (route publique).executor": "Run",
-    "HTTP Request.test | Login - Obtenir un token JWT.executor": "Run",
-    "HTTP Request.test | Test d'authentification avec un token invalide.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "Database connection parameters found",
-    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ElectricityBusinessApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.test | 1. Créer un lieu (authentifié).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 1. Créer un lieu.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 11. Récupérer tous les utilisateurs.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 19. Récupérer tous les tarifs horaires.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 2. Récupérer tous les lieux avec authentification.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 2. Récupérer tous les lieux.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 23. Récupérer tous les médias.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 27. Récupérer toutes les réservations.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 3. Récupérer un lieu par ID.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 42. Supprimer une borne inexistante (404).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 43. Test d'accès non autorisé (sans token).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 44. Test d'accès avec token expiré.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 45. Test de rafraîchissement du token.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | 7. Récupérer toutes les adresses.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Créer un autre utilisateur.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Inscription d'un nouvel utilisateur (route publique).executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Login - Obtenir un token JWT.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Test d'authentification avec un token invalide.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.test | Test de rafraîchissement du token.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;Database connection parameters found&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ElectricityBusinessApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager" selected="HTTP Request.test | 1. Créer un lieu (authentifié)">
-    <configuration name="test | 1. Créer un lieu (authentifié)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/test.http" executionIdentifier="1. Créer un lieu (authentifié)" index="4" runType="Run single request">
+}</component>
+  <component name="RunManager" selected="HTTP Request.test | 45. Test de rafraîchissement du token">
+    <configuration name="test | 42. Supprimer une borne inexistante (404)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/test.http" executionIdentifier="42. Supprimer une borne inexistante (404)" index="39" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="test | 2. Récupérer tous les lieux avec authentification" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/test.http" executionIdentifier="2. Récupérer tous les lieux avec authentification" index="5" runType="Run single request">
+    <configuration name="test | 43. Test d'accès non autorisé (sans token)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/test.http" executionIdentifier="43. Test d'accès non autorisé (sans token)" index="40" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="test | 3. Récupérer un lieu par ID" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/test.http" executionIdentifier="3. Récupérer un lieu par ID" index="6" runType="Run single request">
+    <configuration name="test | 44. Test d'accès avec token expiré" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/test.http" executionIdentifier="44. Test d'accès avec token expiré" index="41" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test | 45. Test de rafraîchissement du token" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/test.http" executionIdentifier="45. Test de rafraîchissement du token" index="42" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="test | Login - Obtenir un token JWT" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/test.http" executionIdentifier="Login - Obtenir un token JWT" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="test | Test d'authentification avec un token invalide" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/backend/test.http" executionIdentifier="Test d'authentification avec un token invalide" index="3" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.test | 1. Créer un lieu (authentifié)" />
-        <item itemvalue="HTTP Request.test | 2. Récupérer tous les lieux avec authentification" />
+        <item itemvalue="HTTP Request.test | 45. Test de rafraîchissement du token" />
+        <item itemvalue="HTTP Request.test | 42. Supprimer une borne inexistante (404)" />
+        <item itemvalue="HTTP Request.test | 43. Test d'accès non autorisé (sans token)" />
+        <item itemvalue="HTTP Request.test | 44. Test d'accès avec token expiré" />
         <item itemvalue="HTTP Request.test | Login - Obtenir un token JWT" />
-        <item itemvalue="HTTP Request.test | Test d'authentification avec un token invalide" />
-        <item itemvalue="HTTP Request.test | 3. Récupérer un lieu par ID" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
-        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
       </set>
     </attachedChunks>
   </component>
@@ -135,11 +149,21 @@
       <workItem from="1749555983029" duration="308000" />
       <workItem from="1749556311496" duration="346000" />
       <workItem from="1749556675025" duration="4940000" />
-      <workItem from="1749645560461" duration="3673000" />
+      <workItem from="1749645560461" duration="4274000" />
+      <workItem from="1750062053676" duration="794000" />
+      <workItem from="1750257052449" duration="2482000" />
+      <workItem from="1750421534572" duration="74000" />
+      <workItem from="1750421715924" duration="13522000" />
+      <workItem from="1750842403635" duration="3465000" />
+      <workItem from="1751449352050" duration="128000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

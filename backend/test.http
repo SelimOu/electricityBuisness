@@ -4,8 +4,7 @@
 ### Variables
 @baseUrl = http://localhost:8080
 @contentType = application/json
-@authToken = Bearer token_example
-
+@authToken = Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFuIiwiaWF0IjoxNzUxNDQ5ODU4LCJleHAiOjE3NTE1MzYyNTh9.XTIWqBJ5HhmT12HAIFB8aOMu8pBOOXEena8F-CNcwQ0
 
 # ===============================
 # AUTHENTIFICATION
@@ -36,6 +35,18 @@ Content-Type: {{contentType}}
     "pseudo": "jean",
     "password": "motdepasse123"
 }
+
+
+### Test de rafraîchissement du token
+POST {{baseUrl}}/api/auth/refresh
+Content-Type: {{contentType}}
+
+{
+    "pseudo": "jean"
+}
+
+# Note : Le cookie refreshToken sera automatiquement envoyé par le navigateur
+# car il a été défini comme HttpOnly lors du login
 
 ### Test d'authentification avec un token invalide
 GET {{baseUrl}}/api/utilisateurs
@@ -81,6 +92,7 @@ Authorization: {{authToken}}
 ### 6. Créer une adresse
 POST {{baseUrl}}/api/adresses
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
 
 {
   "nomAdresse": "123 Avenue de la Madeleine",
@@ -97,13 +109,19 @@ Content-Type: {{contentType}}
 
 ### 7. Récupérer toutes les adresses
 GET {{baseUrl}}/api/adresses
+Authorization: {{authToken}}
+
 
 ### 8. Récupérer une adresse par ID
 GET {{baseUrl}}/api/adresses/1
+Authorization: {{authToken}}
+
 
 ### 9. Mettre à jour une adresse
 PUT {{baseUrl}}/api/adresses/1
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "numeroEtRue": "123 Avenue des Champs-Elysees",
@@ -123,6 +141,8 @@ Content-Type: {{contentType}}
 ### 10. Créer un utilisateur
 POST {{baseUrl}}/api/utilisateurs
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "pseudo": "jea.dulont",
@@ -142,6 +162,8 @@ Content-Type: {{contentType}}
 ### Créer un autre utilisateur
 POST {{baseUrl}}/api/utilisateurs
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "pseudo": "jean.dupont",
@@ -164,12 +186,17 @@ Content-Type: {{contentType}}
 GET {{baseUrl}}/api/utilisateurs
 Authorization: {{authToken}}
 
+
 ### 12. Récupérer un utilisateur par ID
 GET {{baseUrl}}/api/utilisateurs/1
+Authorization: {{authToken}}
+
 
 ### 13. Mettre à jour un utilisateur
 PUT {{baseUrl}}/api/utilisateurs/1
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "pseudo": "jean.dukpont",
@@ -194,6 +221,7 @@ Content-Type: {{contentType}}
 ### 14. Créer une borne
 POST {{baseUrl}}/api/bornes
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
 
 {
   "nomBorne": "Borne-A001",
@@ -210,13 +238,19 @@ Content-Type: {{contentType}}
 
 ### 15. Récupérer toutes les bornes
 GET {{baseUrl}}/api/bornes
+Authorization: {{authToken}}
+
 
 ### 16. Récupérer une borne par ID
 GET {{baseUrl}}/api/bornes/1
+Authorization: {{authToken}}
+
 
 ### 17. Mettre à jour une borne
 PUT {{baseUrl}}/api/bornes/1
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "nomBorne": "Borne-A001-Premium",
@@ -239,6 +273,8 @@ Content-Type: {{contentType}}
 ### 18. Créer un tarif horaire
 POST {{baseUrl}}/api/tarifs-horaires
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "heureDebut": "08:00:00",
@@ -253,13 +289,19 @@ Content-Type: {{contentType}}
 
 ### 19. Récupérer tous les tarifs horaires
 GET {{baseUrl}}/api/tarifs-horaires
+Authorization: {{authToken}}
+
 
 ### 20. Récupérer un tarif horaire par ID
 GET {{baseUrl}}/api/tarifs-horaires/1
+Authorization: {{authToken}}
+
 
 ### 21. Mettre à jour un tarif horaire
 PUT {{baseUrl}}/api/tarifs-horaires/1
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "heureDebut": "08:00:00",
@@ -279,6 +321,8 @@ Content-Type: {{contentType}}
 ### 22. Créer un média
 POST {{baseUrl}}/api/medias
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "nomMedia": "Photo borne A001",
@@ -288,13 +332,19 @@ Content-Type: {{contentType}}
 
 ### 23. Récupérer tous les médias
 GET {{baseUrl}}/api/medias
+Authorization: {{authToken}}
+
 
 ### 24. Récupérer un média par ID
 GET {{baseUrl}}/api/medias/1
+Authorization: {{authToken}}
+
 
 ### 25. Mettre à jour un média
 PUT {{baseUrl}}/api/medias/1
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "nomMedia": "Photo borne A001 - Vue d'ensemble",
@@ -309,6 +359,8 @@ Content-Type: {{contentType}}
 ### 26. Créer une réservation
 POST {{baseUrl}}/api/reservations
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
 "dateDebut": "2025-06-05T10:00:00",
@@ -326,13 +378,18 @@ Content-Type: {{contentType}}
 
 ### 27. Récupérer toutes les réservations
 GET {{baseUrl}}/api/reservations
+Authorization: {{authToken}}
 
 ### 28. Récupérer une réservation par ID
 GET {{baseUrl}}/api/reservations/1
+Authorization: {{authToken}}
+
 
 ### 29. Mettre à jour une réservation
 PUT {{baseUrl}}/api/reservations/1
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
 "dateDebut": "2025-06-05T10:00:00",
@@ -355,6 +412,8 @@ Content-Type: {{contentType}}
 ### 30. Test validation - Adresse sans numéro de rue (doit échouer)
 POST {{baseUrl}}/api/adresses
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "codePostal": "75008",
@@ -365,6 +424,8 @@ Content-Type: {{contentType}}
 ### 31. Test validation - Utilisateur sans email (doit échouer)
 POST {{baseUrl}}/api/utilisateurs
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "pseudo": "testuser",
@@ -376,6 +437,8 @@ Content-Type: {{contentType}}
 ### 32. Test validation - Borne avec coordonnées invalides (doit échouer)
 POST {{baseUrl}}/api/bornes
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "nomBorne": "Borne-Test",
@@ -415,10 +478,14 @@ Content-Type: {{contentType}}
 
 ### 40. Récupérer un lieu inexistant (404)
 GET {{baseUrl}}/api/lieux/999
+Authorization: {{authToken}}
+
 
 ### 41. Mettre à jour un utilisateur inexistant (404)
 PUT {{baseUrl}}/api/utilisateurs/999
 Content-Type: {{contentType}}
+Authorization: {{authToken}}
+
 
 {
   "pseudo": "inexistant",
@@ -430,9 +497,13 @@ Content-Type: {{contentType}}
 
 ### 42. Supprimer une borne inexistante (404)
 DELETE {{baseUrl}}/api/bornes/999
+Authorization: {{authToken}}
+
 
 ### 43. Test d'accès non autorisé (sans token)
 GET {{baseUrl}}/api/utilisateurs
+Authorization: {{authToken}}
+
 
 ### 44. Test d'accès avec token expiré
 GET {{baseUrl}}/api/utilisateurs
