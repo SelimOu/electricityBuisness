@@ -1,0 +1,24 @@
+<div class="max-w-3xl mx-auto p-4 bg-surface rounded shadow">
+    <h2 class="text-xl mb-4 text-foreground">Médias</h2>
+    <div class="mb-3">
+        <label class="block mb-1">Associer à une borne</label>
+        <select [(ngModel)]="selectedBorne" class="p-2 border rounded w-full">
+            <option value="">-- choisir --</option>
+            <option *ngFor="let b of mediasBornes" [value]="b.id">{{ b.nomBorne || b.nom }}</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <input type="file" (change)="onFile($event)" />
+    </div>
+    <ul>
+        <li *ngFor="let m of medias" class="p-2 border-b flex justify-between items-center">
+            <div>
+                <div class="font-semibold">{{ m.filename || m.nom }}</div>
+                <div class="text-sm text-gray-600">Borne: {{ m.borne?.nomBorne || m.borne?.nom || '-' }}</div>
+            </div>
+            <div>
+                <button (click)="del(m)" class="px-2 py-1 bg-red-600 text-inverse rounded">Supprimer</button>
+            </div>
+        </li>
+    </ul>
+</div>

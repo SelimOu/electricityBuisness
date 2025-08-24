@@ -1,0 +1,30 @@
+<header class="h-16 bg-[#071021]/60 backdrop-blur-sm flex items-center px-6 text-white">
+    <div class="flex-1 flex items-center gap-6">
+        <a routerLink="/" class="text-2xl font-semibold text-white">EVCharge</a>
+        <!-- Nav links for authenticated users -->
+        <nav *ngIf="auth.isLogged()" class="hidden md:flex items-center gap-4">
+            <a routerLink="/" class="px-3 py-2 rounded hover:bg-white/5">Tableau de bord</a>
+            <a routerLink="/lieux" class="px-3 py-2 rounded hover:bg-white/5">Mes lieux</a>
+            <a routerLink="/bornes" class="px-3 py-2 rounded hover:bg-white/5">Mes bornes</a>
+            <a routerLink="/carte" class="px-3 py-2 rounded hover:bg-white/5">Carte des bornes</a>
+            <a routerLink="/reservations" class="px-3 py-2 rounded hover:bg-white/5">Mes réservations</a>
+        </nav>
+        <!-- Nav links for non-authenticated users -->
+        <nav *ngIf="!auth.isLogged()" class="hidden md:flex items-center gap-4">
+            <a routerLink="/inscription" class="px-3 py-2 rounded hover:bg-white/5">S'inscrire</a>
+            <a routerLink="/connexion" class="px-3 py-2 rounded hover:bg-white/5">Connexion</a>
+        </nav>
+    </div>
+
+    <div class="flex items-center gap-4">
+        <button class="p-2 rounded-md hover:bg-white/5" (click)="theme.toggle()">Thème</button>
+        <div *ngIf="auth.isLogged()" class="flex items-center gap-3">
+            <div class="text-sm text-cyan-300">{{ auth.getPseudoFromToken() || 'Utilisateur' }}</div>
+            <button (click)="logout()" class="px-3 py-1 bg-red-600/30 hover:bg-red-600/40 rounded">Déconnexion</button>
+        </div>
+        <div *ngIf="!auth.isLogged()" class="flex items-center gap-3">
+            <a routerLink="/inscription" class="px-3 py-1 bg-cyan-600 text-black rounded font-semibold">S'inscrire</a>
+            <a routerLink="/connexion" class="px-3 py-1 bg-white/5 rounded">Se connecter</a>
+        </div>
+    </div>
+</header>

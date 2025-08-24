@@ -1,0 +1,40 @@
+<div class="max-w-3xl mx-auto p-4 bg-surface rounded shadow">
+    <h2 class="text-xl mb-4 text-foreground">Adresses</h2>
+
+    <form (ngSubmit)="save()" class="space-y-2 mb-4">
+        <input name="nomAdresse" [(ngModel)]="model.nomAdresse" placeholder="Nom adresse"
+            class="p-2 border rounded w-full" required />
+        <input name="numeroRue" [(ngModel)]="model.numeroRue" placeholder="Numéro et rue"
+            class="p-2 border rounded w-full" />
+        <input name="codePostal" [(ngModel)]="model.codePostal" placeholder="Code postal"
+            class="p-2 border rounded w-full" />
+        <input name="ville" [(ngModel)]="model.ville" placeholder="Ville" class="p-2 border rounded w-full" />
+        <input name="region" [(ngModel)]="model.region" placeholder="Région" class="p-2 border rounded w-full" />
+        <input name="pays" [(ngModel)]="model.pays" placeholder="Pays" class="p-2 border rounded w-full" />
+        <input name="complement" [(ngModel)]="model.complement" placeholder="Complément"
+            class="p-2 border rounded w-full" />
+        <input name="etage" [(ngModel)]="model.etage" placeholder="Étage" class="p-2 border rounded w-full" />
+        <div class="flex justify-end">
+            <button class="bg-green-600 text-inverse px-4 py-2 rounded" type="submit">Enregistrer</button>
+        </div>
+    </form>
+
+    <div class="mb-2">
+        <button (click)="prev()" class="px-2 py-1 border rounded mr-2">Préc</button>
+        <button (click)="next()" class="px-2 py-1 border rounded">Suiv</button>
+    </div>
+
+    <ul>
+        <li *ngFor="let a of paged" class="p-2 border-b flex justify-between items-center">
+            <div>
+                <div class="font-semibold">{{ a.nomAdresse }}</div>
+                <div class="text-sm text-gray-600">{{ a.numeroRue }}, {{ a.codePostal }} {{ a.ville }} - {{ a.pays }}
+                </div>
+            </div>
+            <div class="space-x-2">
+                <button (click)="edit(a)" class="px-2 py-1 border rounded">Edit</button>
+                <button (click)="remove(a)" class="px-2 py-1 bg-red-600 text-inverse rounded">Supprimer</button>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,6 @@
+/* Reset component styles - Tailwind utilities used instead */
+:host {
+    display: block
+}
+
+/* All styles handled with Tailwind classes in template */

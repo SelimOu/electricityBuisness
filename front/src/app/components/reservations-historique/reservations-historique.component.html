@@ -1,0 +1,21 @@
+<div class="max-w-4xl mx-auto p-6">
+    <h2 class="text-xl mb-4 font-bold">Historique des réservations</h2>
+
+    <div class="flex gap-2 mb-4">
+        <input [(ngModel)]="q" placeholder="Recherche" class="p-2 border rounded flex-1 bg-transparent text-white" />
+        <input [(ngModel)]="fromDate" type="date" class="p-2 border rounded bg-transparent text-white" />
+        <input [(ngModel)]="toDate" type="date" class="p-2 border rounded bg-transparent text-white" />
+        <button (click)="clearFilters()" class="px-3 py-2 border rounded">Nettoyer</button>
+    </div>
+
+    <div class="space-y-6">
+        <div *ngFor="let r of filtered" class="flex items-start gap-4">
+            <div class="w-3 h-3 rounded-full mt-2"
+                [ngClass]="{'bg-cyan-400': r.etat === 'Terminée', 'bg-gray-500': r.etat === 'Annulée'}"></div>
+            <div class="bg-white/5 p-4 rounded-lg flex-1">
+                <div class="text-white font-semibold">{{ r.borneName || (r.idBorne ? ('Borne #' + r.idBorne) : 'Borne') }}</div>
+                <div class="text-gray-300 text-sm">{{ r.dateDebut }} → {{ r.dateFin }} — État: {{ r.etat }}</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+/* Reset component styles - Tailwind utilities used instead */
+:host {
+    display: block
+}

@@ -1,0 +1,33 @@
+<div class="flex h-screen">
+    <!-- Colonne gauche avec image -->
+    <div class="w-1/2 h-full bg-cover bg-center"
+        style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80');">
+        <div class="w-full h-full bg-black bg-opacity-40"></div>
+    </div>
+
+    <!-- Colonne droite avec formulaire -->
+    <div class="w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
+        <div class="w-96 p-8 rounded-2xl bg-white/10 backdrop-blur-md shadow-xl">
+            <h2 class="text-3xl font-bold text-white mb-6">Inscription</h2>
+            <form class="space-y-4" (ngSubmit)="register()">
+                <input type="text" placeholder="Nom" [(ngModel)]="model.nomUtilisateur" name="nom" required
+                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
+                <input type="text" placeholder="Prénom" [(ngModel)]="model.prenom" name="prenom"
+                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
+                <input type="text" placeholder="Pseudo" [(ngModel)]="model.pseudo" name="pseudo"
+                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
+                <input type="email" placeholder="Email" [(ngModel)]="model.adresseMail" name="adresseMail" required
+                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
+                <input type="password" placeholder="Mot de passe" [(ngModel)]="model.motDePasse" name="motDePasse"
+                    required class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
+                <input type="date" placeholder="Date de naissance" [(ngModel)]="model.dateNaissance"
+                    name="dateNaissance"
+                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
+                <input type="text" placeholder="Véhicule" [(ngModel)]="model.vehicule" name="vehicule"
+                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
+                <button type="submit"
+                    class="w-full py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-bold transition">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+/* Reset component styles - Tailwind utilities used instead */
+:host {
+    display: block
+}
+
+/* Ensure readable, black text inside reservation component */
+:host,
+:host * {
+    color: #000 !important;
+}
+
+/* Buttons with inverse text should also be dark where appropriate */
+.bg-blue-600.text-inverse {
+    color: #000 !important;
+}

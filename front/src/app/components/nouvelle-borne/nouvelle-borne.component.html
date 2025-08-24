@@ -1,0 +1,93 @@
+<div class="max-w-3xl mx-auto p-4 card bg-surface">
+    <h2 class="text-xl mb-4">Nouvelle Borne</h2>
+    <form (ngSubmit)="save()" class="space-y-4">
+        <div>
+            <label class="block mb-1">Nom de la borne</label>
+            <input [(ngModel)]="model.nomBorne" name="nomBorne" class="p-2 border rounded w-full text-black" />
+        </div>
+        <div>
+            <label class="block mb-1">Coordonnées GPS</label>
+            <input [(ngModel)]="model.coordGPS" name="coordGPS" class="p-2 border rounded w-full text-black" />
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <input [(ngModel)]="model.tarif" name="tarif" type="number" placeholder="Tarif"
+                class="p-2 border rounded text-black" />
+            <input [(ngModel)]="model.puissance" name="puissance" type="number" placeholder="Puissance"
+                class="p-2 border rounded text-black" />
+        </div>
+        <div>
+            <label class="block mb-1">Instructions</label>
+            <textarea [(ngModel)]="model.instruction" name="instruction"
+                class="p-2 border rounded w-full text-black"></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+            <label><input type="checkbox" [(ngModel)]="model.surPied" name="surPied" /> Sur pied</label>
+            <label><input type="checkbox" [(ngModel)]="model.occupee" name="occupee" /> Occupée</label>
+        </div>
+        <div>
+            <label class="block mb-1">Etat</label>
+            <input [(ngModel)]="model.etat" name="etat" class="p-2 border rounded w-full text-black" />
+        </div>
+
+        <hr />
+        <h3 class="font-semibold">Lieu</h3>
+        <div class="flex items-center space-x-2">
+            <label><input type="radio" [(ngModel)]="creatingLieu" name="lieuMode" [value]="false" /> Choisir
+                existant</label>
+            <label><input type="radio" [(ngModel)]="creatingLieu" name="lieuMode" [value]="true" /> Créer
+                nouveau</label>
+        </div>
+        <div *ngIf="!creatingLieu">
+            <select [(ngModel)]="model.lieuId" name="lieuId" class="p-2 border rounded w-full text-black">
+                <option value="">-- choisir --</option>
+                <option *ngFor="let l of lieux" [value]="l.id">{{ l.instructions || ('Lieu #' + l.id) }}</option>
+            </select>
+        </div>
+        <div *ngIf="creatingLieu" class="p-2 border rounded bg-surface-weak">
+            <input [(ngModel)]="newLieu.instructions" name="newLieuInstructions"
+                class="p-2 border rounded w-full text-black" placeholder="Instructions" />
+            <input [(ngModel)]="newLieu.instructions" name="newLieuInstructions"
+                class="p-2 border rounded w-full text-black" placeholder="Instructions" />
+            <h5 class="font-semibold mt-2">Adresse (optionnel)</h5>
+            <input [(ngModel)]="newLieu.adresse.nomAdresse" name="adrNom"
+                class="p-2 border rounded w-full mt-1 text-black" placeholder="Nom adresse" />
+            <input [(ngModel)]="newLieu.adresse.numeroEtRue" name="adrNumeroRue"
+                class="p-2 border rounded w-full mt-1 text-black" placeholder="Numéro et rue" />
+            <div class="grid grid-cols-3 gap-2 mt-1">
+                <input [(ngModel)]="newLieu.adresse.codePostal" name="adrCp" class="p-2 border rounded text-black"
+                    placeholder="Code postal" />
+                <input [(ngModel)]="newLieu.adresse.ville" name="adrVille" class="p-2 border rounded text-black"
+                    placeholder="Ville" />
+                <input [(ngModel)]="newLieu.adresse.region" name="adrRegion" class="p-2 border rounded text-black"
+                    placeholder="Région" />
+            </div>
+            <div class="grid grid-cols-2 gap-2 mt-1">
+                <input [(ngModel)]="newLieu.adresse.pays" name="adrPays" class="p-2 border rounded text-black"
+                    placeholder="Pays" />
+                <input [(ngModel)]="newLieu.adresse.complement" name="adrCompl" class="p-2 border rounded text-black"
+                    placeholder="Complément" />
+            </div>
+            <input [(ngModel)]="newLieu.adresse.etage" name="adrEtage" class="p-2 border rounded w-full mt-1 text-black"
+                placeholder="Étage" />
+        </div>
+
+        <hr />
+        <h3 class="font-semibold">Médias</h3>
+        <input type="file" (change)="onFilesSelected($event)" multiple class="text-black" />
+        <div class="grid grid-cols-3 gap-2 mt-2">
+            <div *ngFor="let f of filePreviews; let i = index" class="p-2 border rounded">
+                <div class="font-semibold">{{ f.name }}</div>
+                <div class="text-sm text-gray-600">{{ f.size }} bytes</div>
+                <div *ngIf="f.type.startsWith('image')"><img [src]="f.url" class="w-full h-24 object-cover mt-2" />
+                </div>
+                <div class="mt-2"><button (click)="removePreview(i)" class="px-2 py-1 btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex space-x-2 mt-4">
+            <button type="submit" class="px-4 py-2 btn-cyan">Enregistrer</button>
+            <button type="button" (click)="cancel()" class="px-4 py-2 btn-danger">Annuler</button>
+        </div>
+    </form>
+</div>

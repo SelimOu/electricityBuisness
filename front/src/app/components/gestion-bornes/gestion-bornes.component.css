@@ -1,0 +1,16 @@
+/* Reset component styles - Tailwind utilities used instead */
+:host {
+    display: block
+}
+
+/* Force white text for the bornes management page */
+:host,
+:host * {
+    color: #fff !important;
+}
+
+/* Ensure specific table cells keep readable backgrounds if needed */
+.table-wrap table td,
+.table-wrap table th {
+    color: #fff !important;
+}

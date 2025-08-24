@@ -1,0 +1,40 @@
+<div class="max-w-4xl mx-auto p-4 card bg-surface">
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl mb-0 text-foreground">Gestion des bornes</h2>
+        <!-- vrai bouton Ajouter */ -->
+        <button routerLink="/bornes/new" class="fab-neon p-3 rounded-full text-sm" aria-label="Ajouter">＋</button>
+    </div>
+
+    <!-- Liste des bornes -->
+    <div class="table-wrap overflow-auto bg-surface-weak rounded-lg p-2">
+        <table class="min-w-full">
+            <thead>
+                <tr class="text-left text-sm muted">
+                    <th class="px-4 py-3">Nom</th>
+                    <th class="px-4 py-3">CoordGPS</th>
+                    <th class="px-4 py-3">Tarif</th>
+                    <th class="px-4 py-3">Puissance</th>
+                    <th class="px-4 py-3">Lieu</th>
+                    <th class="px-4 py-3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let b of bornes" class="border-t border-surface-weak hover:bg-surface-weak transition">
+                    <td class="px-4 py-3 text-black">{{ b.nomBorne || b.nom }}</td>
+                    <td class="px-4 py-3 text-black">{{ b.coordGPS }}</td>
+                    <td class="px-4 py-3 text-black">{{ b.tarif }} €/min</td>
+                    <td class="px-4 py-3 text-black">{{ b.puissance }} kW</td>
+                    <td class="px-4 py-3 text-black">{{ b.lieu?.nom || b.lieu?.instructions || '—' }}</td>
+                    <td class="px-4 py-3">
+                        <button *ngIf="b._isOwner" (click)="edit(b)"
+                            class="px-2 py-1 rounded bg-surface-weak text-foreground mr-2">Edit</button>
+                        <button *ngIf="b._isOwner" (click)="remove(b)"
+                            class="px-2 py-1 rounded bg-red-600 text-inverse">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p *ngIf="!bornes || bornes.length === 0" class="mt-4 text-gray-600">Aucune borne trouvée.</p>
+</div>

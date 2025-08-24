@@ -1,0 +1,58 @@
+{
+    "$schema": "https://angular.io/cli/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "electricity-business-front": {
+            "projectType": "application",
+            "root": "",
+            "sourceRoot": "src",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/electricity-business-front",
+                        "index": "src/index.html",
+                        "main": "src/main.ts",
+                        "polyfills": "src/polyfills.ts",
+                        "tsConfig": "tsconfig.json",
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets"
+                        ],
+                        "styles": [
+                            "src/styles.css",
+                            "node_modules/maplibre-gl/dist/maplibre-gl.css"
+                        ],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "electricity-business-front:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "electricity-business-front:build:production"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "electricity-business-front"
+}
