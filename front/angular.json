@@ -21,7 +21,7 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/styles.css",
+                            "src/styles.scss",
                             "node_modules/maplibre-gl/dist/maplibre-gl.css"
                         ],
                         "scripts": []

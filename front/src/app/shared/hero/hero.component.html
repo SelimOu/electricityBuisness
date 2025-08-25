@@ -1,0 +1,13 @@
+<section [ngClass]="heroClasses" class="relative parallax-container">
+  <div ebParallax class="hero-bg" [style.background-image]="'url(' + background + ')'" *ngIf="background"></div>
+  <div [class]="overlayClass"></div>
+  <div class="hero-content">
+    <h1 class="text-4xl md:text-6xl font-poppins font-extrabold mb-6 glow-text" [innerHTML]="title"></h1>
+    <p class="text-white/70 text-lg md:text-xl max-w-3xl mx-auto mb-8" [innerHTML]="subtitle"></p>
+    <div *ngIf="ctaLabel" class="flex justify-center">
+      <a *ngIf="ctaRouterLink" [routerLink]="ctaRouterLink" mat-raised-button color="primary" class="hero-cta neon-btn">{{ ctaLabel }}</a>
+      <button *ngIf="!ctaRouterLink" mat-raised-button color="primary" class="hero-cta neon-btn">{{ ctaLabel }}</button>
+    </div>
+  </div>
+  <div class="absolute inset-0 pointer-events-none select-none" aria-hidden="true"></div>
+</section>

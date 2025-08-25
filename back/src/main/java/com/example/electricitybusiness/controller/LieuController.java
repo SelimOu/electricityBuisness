@@ -157,4 +157,16 @@ public class LieuController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
     }
+
+    // helper endpoint to return adresses for a lieu
+    @GetMapping("/{id}/adresses")
+    public ResponseEntity<java.util.List<com.example.electricitybusiness.entity.Adresse>> getAdressesForLieu(@PathVariable Long id) {
+        try {
+            var list = this.service.findById(id).map(l -> l.getAdresses()).orElse(java.util.Collections.emptyList());
+            return ResponseEntity.ok(list);
+        } catch (Exception e) {
+            logger.info("Error fetching adresses for lieu {}: {}", id, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }

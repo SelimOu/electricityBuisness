@@ -1,29 +1,80 @@
-<div class="max-w-3xl mx-auto p-4 bg-surface rounded shadow">
-    <h2 class="text-xl mb-4 text-foreground">Mes lieux</h2>
-    <form (ngSubmit)="save()" class="space-y-2 mb-4">
-        <input name="nom" [(ngModel)]="model.nom" placeholder="Nom du lieu" class="p-2 border rounded w-full"
-            required />
-        <textarea name="instructions" [(ngModel)]="model.instructions" placeholder="Instructions"
-            class="p-2 border rounded w-full"></textarea>
-        <div class="flex justify-end">
-            <button class="bg-blue-600 text-inverse px-4 py-2 rounded" type="submit">Enregistrer</button>
+<div class="max-w-4xl mx-auto p-4 card bg-surface">
+    <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl mb-0 text-foreground">Gestion des lieux</h2>
+        <div>
+            <button (click)="addNew()" class="fab-neon p-3 rounded-full text-sm" aria-label="Ajouter">＋</button>
+            <button routerLink="/lieux/new" class="ml-2 p-2 border rounded hidden">(dev new)</button>
         </div>
-    </form>
+    </div>
 
-    <ul>
-        <li *ngFor="let l of lieux" class="p-2 border-b flex justify-between items-center">
+    <div *ngIf="showForm" class="mb-4">
+        <form (ngSubmit)="save()" class="space-y-4">
+            <h3 class="text-lg font-semibold text-white">{{ model && model.id ? 'Modifier un lieu' : 'Créer un nouveau
+                lieu' }}</h3>
             <div>
-                <div class="font-semibold">{{ l.nom }}</div>
-                <div class="text-sm text-gray-600">{{ l.instructions }}</div>
+                <label class="block mb-1 text-white">Instructions</label>
+                <textarea [(ngModel)]="model.instructions" name="instructions"
+                    class="p-2 border rounded w-full text-white bg-transparent"></textarea>
             </div>
-            <div class="space-x-2">
-                <button
-                    *ngIf="(l.utilisateur && (l.utilisateur.id === currentUserId || l.utilisateur === currentUserId))"
-                    (click)="edit(l)" class="px-2 py-1 border rounded">Edit</button>
-                <button
-                    *ngIf="(l.utilisateur && (l.utilisateur.id === currentUserId || l.utilisateur === currentUserId))"
-                    (click)="remove(l)" class="px-2 py-1 btn-danger">Supprimer</button>
+
+            <h5 class="font-semibold text-white">Adresse</h5>
+            <div class="p-2 border rounded bg-surface-weak">
+                <input [(ngModel)]="model.adresse.nomAdresse" name="adrNom"
+                    class="p-2 border rounded w-full mt-1 text-white bg-transparent" placeholder="Nom adresse" />
+                <input [(ngModel)]="model.adresse.numeroEtRue" name="adrNumeroRue"
+                    class="p-2 border rounded w-full mt-1 text-white bg-transparent" placeholder="Numéro et rue" />
+                <div class="grid grid-cols-3 gap-2 mt-1">
+                    <input [(ngModel)]="model.adresse.codePostal" name="adrCp"
+                        class="p-2 border rounded text-white bg-transparent" placeholder="Code postal" />
+                    <input [(ngModel)]="model.adresse.ville" name="adrVille"
+                        class="p-2 border rounded text-white bg-transparent" placeholder="Ville" />
+                    <input [(ngModel)]="model.adresse.region" name="adrRegion"
+                        class="p-2 border rounded text-white bg-transparent" placeholder="Région" />
+                </div>
+                <div class="grid grid-cols-2 gap-2 mt-1">
+                    <input [(ngModel)]="model.adresse.pays" name="adrPays"
+                        class="p-2 border rounded text-white bg-transparent" placeholder="Pays" />
+                    <input [(ngModel)]="model.adresse.complement" name="adrCompl"
+                        class="p-2 border rounded text-white bg-transparent" placeholder="Complément" />
+                </div>
+                <input [(ngModel)]="model.adresse.etage" name="adrEtage"
+                    class="p-2 border rounded w-full mt-1 text-white bg-transparent" placeholder="Étage" />
             </div>
-        </li>
-    </ul>
+
+            <div class="flex space-x-2 mt-4">
+                <button type="submit" class="px-4 py-2 btn-cyan">Enregistrer</button>
+                <button type="button" (click)="showForm=false" class="px-4 py-2 btn-danger">Annuler</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-wrap overflow-auto bg-surface-weak rounded-lg p-2">
+        <table class="min-w-full">
+            <thead>
+                <tr class="text-left text-sm muted">
+                    <th class="px-4 py-3 text-white">Adresse</th>
+                    <th class="px-4 py-3 text-white">Instructions</th>
+                    <th class="px-4 py-3 text-white">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let l of lieux" class="border-t border-surface-weak hover:bg-surface-weak transition">
+                    <td class="px-4 py-3 text-white">
+                        {{ formatAddress(l) }}
+                        <div class="text-sm text-white">{{ l.adresse?.nomAdresse }}{{ l.adresse?.ville ? (', ' +
+                            l.adresse.ville) : '' }}</div>
+                    </td>
+                    <td class="px-4 py-3 text-white">{{ l.instructions || '—' }}</td>
+                    <td class="px-4 py-3">
+                        <button *ngIf="isOwnedByCurrentUser(l)" (click)="edit(l)"
+                            class="px-2 py-1 rounded bg-surface-weak text-foreground mr-2">Edit</button>
+                        <button *ngIf="isOwnedByCurrentUser(l)" (click)="remove(l)"
+                            class="px-2 py-1 rounded bg-red-600 text-inverse">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p *ngIf="!lieux || lieux.length === 0" class="mt-4 text-gray-600">Aucun lieu trouvé.</p>
 </div>

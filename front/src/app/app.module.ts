@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,6 +27,10 @@ import { AuthGuard } from './services/auth.guard';
 import { NonAuthGuard } from './services/nonauth.guard';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HeaderComponent } from './shared/header/header.component';
+import { ParallaxDirective } from './shared/directives/parallax.directive';
+import { HeroComponent } from './shared/hero/hero.component';
+import { RevealDirective } from './shared/directives/reveal.directive';
+import { MaterialModule } from './material.module';
 
 const routes: Routes = [
     { path: '', component: TableauDeBordComponent, canActivate: [AuthGuard] },
@@ -59,10 +64,13 @@ const routes: Routes = [
         ReservationComponent,
         ReservationsCourantesComponent,
         ReservationsHistoriqueComponent,
-        GestionMediasComponent
-        , FilterPipe
+        GestionMediasComponent,
+        FilterPipe,
+    ParallaxDirective,
+    HeroComponent,
+    RevealDirective
     ],
-    imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule.forRoot(routes)],
+    imports: [BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, HttpClientModule, MaterialModule, RouterModule.forRoot(routes)],
     providers: [ApiService, AuthService, AuthGuard, NonAuthGuard, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
     bootstrap: [AppComponent]
 })

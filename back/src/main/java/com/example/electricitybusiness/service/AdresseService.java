@@ -16,4 +16,5 @@ public class AdresseService {
     public Optional<Adresse> findById(Long id) { return repository.findById(id); }
     public Adresse save(Adresse a) { return repository.save(a); }
     public void deleteById(Long id) { repository.deleteById(id); }
+    public java.util.List<Adresse> findByLieuId(Long lieuId) { return repository.findByLieuId(lieuId); }
 }

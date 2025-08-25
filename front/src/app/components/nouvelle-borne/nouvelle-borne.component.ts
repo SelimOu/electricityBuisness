@@ -22,7 +22,8 @@ export class NouvelleBorneComponent implements OnInit {
         this.loadLieux();
     }
 
-    loadLieux() { this.api.list('lieux').subscribe((d: any) => this.lieux = d || []); }
+    // only load lieux owned by the authenticated user
+    loadLieux() { this.api.list('lieux/mine').subscribe((d: any) => this.lieux = d || []); }
 
     onFilesSelected(e: any) {
         const files: FileList = e.target.files;

@@ -25,6 +25,11 @@ public class AdresseController {
     @GetMapping
     public List<Adresse> all() { return service.findAll(); }
 
+    @GetMapping(params = "lieuId")
+    public List<Adresse> findByLieuId(@org.springframework.web.bind.annotation.RequestParam("lieuId") Long lieuId) {
+        return service.findByLieuId(lieuId);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Adresse> getById(@PathVariable Long id) {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());

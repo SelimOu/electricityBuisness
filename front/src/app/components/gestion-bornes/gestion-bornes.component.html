@@ -15,6 +15,7 @@
                     <th class="px-4 py-3">Tarif</th>
                     <th class="px-4 py-3">Puissance</th>
                     <th class="px-4 py-3">Lieu</th>
+                    <th class="px-4 py-3">Medias</th>
                     <th class="px-4 py-3">Actions</th>
                 </tr>
             </thead>
@@ -25,6 +26,35 @@
                     <td class="px-4 py-3 text-black">{{ b.tarif }} €/min</td>
                     <td class="px-4 py-3 text-black">{{ b.puissance }} kW</td>
                     <td class="px-4 py-3 text-black">{{ b.lieu?.nom || b.lieu?.instructions || '—' }}</td>
+                    <td class="px-4 py-3 text-black">
+                        <div class="flex items-center space-x-2">
+                            <ng-container *ngIf="b.medias && b.medias.length>0; else noMedias">
+                                <ng-container *ngFor="let m of b.medias | slice:0:4">
+                                    <ng-container *ngIf="shouldRenderImage(m); else nonImage">
+                                        <button (click)="openLightbox(m)" class="p-0 border-0 bg-transparent"
+                                            title="{{ m.nomMedia || m.filename || m.nom }}">
+                                            <img [src]="getMediaFullUrl(m)" alt="media"
+                                                class="w-12 h-8 object-cover rounded" />
+                                        </button>
+                                    </ng-container>
+                                    <ng-template #nonImage>
+                                        <a [href]="getMediaFullUrl(m)" target="_blank" rel="noopener"
+                                            class="inline-flex items-center px-2 py-1 border rounded text-sm">
+                                            <svg class="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
+                                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                            {{ m.nomMedia || m.filename || 'file' }}</a>
+                                    </ng-template>
+                                </ng-container>
+                                <span *ngIf="b.medias.length>4" class="text-sm muted">+{{ b.medias.length - 4 }}</span>
+                            </ng-container>
+                            <ng-template #noMedias><span class="text-sm muted">—</span></ng-template>
+                        </div>
+                    </td>
                     <td class="px-4 py-3">
                         <button *ngIf="b._isOwner" (click)="edit(b)"
                             class="px-2 py-1 rounded bg-surface-weak text-foreground mr-2">Edit</button>
@@ -37,4 +67,21 @@
     </div>
 
     <p *ngIf="!bornes || bornes.length === 0" class="mt-4 text-gray-600">Aucune borne trouvée.</p>
+
+    <!-- Lightbox modal for images -->
+    <div *ngIf="selectedMedia" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+        (click)="closeLightbox()">
+        <div class="max-w-3xl w-full p-4" (click)="$event.stopPropagation()">
+            <div class="bg-white rounded overflow-hidden">
+                <div class="p-2 flex justify-end">
+                    <button (click)="closeLightbox()" class="px-2 py-1">Fermer</button>
+                </div>
+                <div class="p-4 flex justify-center">
+                    <img [src]="getMediaFullUrl(selectedMedia)" alt="preview" class="max-h-[70vh] object-contain" />
+                </div>
+                <div class="p-2 text-sm muted">{{ selectedMedia?.nomMedia || selectedMedia?.filename ||
+                    selectedMedia?.nom }}</div>
+            </div>
+        </div>
+    </div>
 </div>

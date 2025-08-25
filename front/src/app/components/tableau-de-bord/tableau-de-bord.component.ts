@@ -27,16 +27,31 @@ export class TableauDeBordComponent implements OnInit {
             this.bornesByUser = this.bornes; // already scoped to current user
         }, () => { this.bornes = []; this.bornesByUser = []; });
 
-    // load *current user's* reservations and compute active count
-    this.api.list('reservations/mine').subscribe((r: any) => {
+        // load *current user's* reservations and compute active count
+        this.api.list('reservations/mine').subscribe((r: any) => {
             this.reservations = r || [];
+            const now = new Date().getTime();
+            const upcomingWindowMs = 30 * 60 * 1000; // 30 minutes window for "about to start"
             this.activeReservationsCount = (this.reservations || []).filter((res: any) => {
-                const s = (res.etat || '').toLowerCase();
-                return s === 'active' || s === 'en_cours' || !res.etat;
+                try {
+                    // prefer explicit state if present
+                    const s = (res.etat || '').toLowerCase();
+                    // treat explicit states that imply activity as active
+                    if (s === 'active' || s === 'en_cours') return true;
+                    // treat confirmed reservations as active (many backends use CONFIRMED)
+                    if (s.includes('confirm')) return true;
+                    // fallback: check if current time is between dateDebut and dateFin
+                    const start = res.dateDebut ? new Date(res.dateDebut).getTime() : null;
+                    const end = res.dateFin ? new Date(res.dateFin).getTime() : null;
+                    if (start && end) {
+                        if (now >= start && now <= end) return true;
+                        // treat as active if it will start within the upcoming window
+                        if (start > now && (start - now) <= upcomingWindowMs) return true;
+                    }
+                    return false;
+                } catch (e) { return false; }
             }).length;
-        });
-
-        // total users - useful summary metric
-        this.api.list('utilisateurs').subscribe((u: any) => { this.userCount = (u || []).length; this.loading = false; });
+            this.loading = false;
+        }, () => { this.reservations = []; this.activeReservationsCount = 0; this.loading = false; });
     }
 }

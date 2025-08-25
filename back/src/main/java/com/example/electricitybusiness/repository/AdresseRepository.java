@@ -7,4 +7,6 @@ import com.example.electricitybusiness.entity.Adresse;
 
 @Repository
 public interface AdresseRepository extends JpaRepository<Adresse, Long> {
+	// find all addresses belonging to a specific lieu
+	java.util.List<Adresse> findByLieuId(Long lieuId);
 }

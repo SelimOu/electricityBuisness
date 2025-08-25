@@ -4,9 +4,12 @@
 }
 
 /* Ensure readable, black text inside reservation component */
-:host,
-:host * {
-    color: #000 !important;
+/* Avoid forcing color globally; only ensure form controls show readable (dark) text */
+:host input,
+:host select,
+:host textarea,
+:host .form-control {
+    color: #000;
 }
 
 /* Buttons with inverse text should also be dark where appropriate */

@@ -12,6 +12,7 @@ export class GestionBornesComponent implements OnInit {
     model: any = {};
     lieux: any[] = [];
     medias: any[] = [];
+    selectedMedia: any = null;
     creatingLieu = false;
     newLieu: any = { instructions: '', utilisateur: null, adresse: {} };
 
@@ -25,9 +26,10 @@ export class GestionBornesComponent implements OnInit {
     ngOnInit() {
         // try resolve current user first so ownership flags can be computed
         this.resolveCurrentUser();
-        this.load();
-        this.loadLieux();
+        // load medias first so we can attach them to bornes when bornes arrive
         this.loadMedias();
+        this.loadLieux();
+        this.load();
     }
 
     loadLieux() { this.api.list('lieux/mine').subscribe((d: any) => this.lieux = d || []); }
@@ -42,6 +44,8 @@ export class GestionBornesComponent implements OnInit {
             } catch (e) { /* ignore */ }
             console.debug('DEBUG: /api/bornes/mine response:', d);
             this.bornes = (d || []).map((b: any) => ({ ...b, _isOwner: this.isOwnedByCurrentUser(b) }));
+            // attach medias that were already loaded
+            this.attachMediasToBornes();
             // debug: summarize ownership computation
             try {
                 console.debug('DEBUG: bornes mapped _isOwner:', this.bornes.map(b => ({ id: b.id, _isOwner: b._isOwner, pseudo: b.lieu?.utilisateur?.pseudo, userId: b.lieu?.utilisateur?.id })));
@@ -49,6 +53,50 @@ export class GestionBornesComponent implements OnInit {
         }, err => {
             console.error('DEBUG: /api/bornes/mine error', err);
         });
+    }
+
+    attachMediasToBornes() {
+        if (!this.bornes || !this.medias) return;
+        // ensure each borne has a medias array with the medias that reference it
+        this.bornes = this.bornes.map(b => {
+            const m = (this.medias || []).filter((mm: any) => mm && mm.borne && Number(mm.borne.id) === Number(b.id));
+            return { ...b, medias: m };
+        });
+    }
+
+    getMediaFullUrl(m: any) {
+        if (!m || !m.url) return '';
+        try {
+            if (m.url.startsWith('http')) return m.url;
+            // Prefer the backend origin if available (ApiService.baseUrl ends with '/api')
+            try {
+                const base = (this.api && this.api.baseUrl) ? (this.api.baseUrl.replace(/\/api\/?$/, '')) : window.location.origin;
+                return `${base}${m.url}`;
+            } catch (e) {
+                return `${window.location.origin}${m.url}`;
+            }
+        } catch (e) { return m.url; }
+    }
+
+    isImage(m: any) {
+        return m && m.type && m.type.startsWith && m.type.startsWith('image/');
+    }
+
+    shouldRenderImage(m: any) {
+        if (!m) return false;
+        if (this.isImage(m)) return true;
+        if (m.url && typeof m.url === 'string') {
+            return /\.(jpg|jpeg|png|gif|webp|bmp|svg)(\?.*)?$/i.test(m.url);
+        }
+        return false;
+    }
+
+    openLightbox(m: any) {
+        this.selectedMedia = m;
+    }
+
+    closeLightbox() {
+        this.selectedMedia = null;
     }
 
     resolveCurrentUser() {
@@ -157,7 +205,7 @@ export class GestionBornesComponent implements OnInit {
     remove(b: any) {
         if (!confirm('Supprimer cette borne ?')) return;
         // check reservations
-    this.api.list('reservations/mine').subscribe((r: any[]) => {
+        this.api.list('reservations/mine').subscribe((r: any[]) => {
             const active = (r || []).find(x => Number(x.idBorne) === Number(b.id) && x.etat && x.etat !== 'CANCELLED');
             if (active) { alert('Impossible: cette borne a des réservations actives.'); return; }
             this.api.delete('bornes', b.id).subscribe(() => this.load(), () => alert('Erreur suppression'));

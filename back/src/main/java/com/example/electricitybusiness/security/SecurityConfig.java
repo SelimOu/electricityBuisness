@@ -35,7 +35,7 @@ public class SecurityConfig {
             // Also permit OPTIONS explicitly as a fallback
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             // Public endpoints (read-only) used by the frontend map and listings
-            .antMatchers(HttpMethod.GET, "/api/bornes", "/api/lieux", "/api/medias").permitAll()
+            .antMatchers(HttpMethod.GET, "/api/bornes/**", "/api/lieux/**", "/api/medias/**").permitAll()
             // Authentication endpoints remain public
             .antMatchers("/api/auth/**").permitAll()
             // (no temporary admin-permit in production)

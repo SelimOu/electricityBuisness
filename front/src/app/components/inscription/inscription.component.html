@@ -1,33 +1,81 @@
-<div class="flex h-screen">
-    <!-- Colonne gauche avec image -->
-    <div class="w-1/2 h-full bg-cover bg-center"
-        style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80');">
-        <div class="w-full h-full bg-black bg-opacity-40"></div>
-    </div>
-
-    <!-- Colonne droite avec formulaire -->
-    <div class="w-1/2 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-        <div class="w-96 p-8 rounded-2xl bg-white/10 backdrop-blur-md shadow-xl">
-            <h2 class="text-3xl font-bold text-white mb-6">Inscription</h2>
-            <form class="space-y-4" (ngSubmit)="register()">
-                <input type="text" placeholder="Nom" [(ngModel)]="model.nomUtilisateur" name="nom" required
-                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
-                <input type="text" placeholder="Prénom" [(ngModel)]="model.prenom" name="prenom"
-                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
-                <input type="text" placeholder="Pseudo" [(ngModel)]="model.pseudo" name="pseudo"
-                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
-                <input type="email" placeholder="Email" [(ngModel)]="model.adresseMail" name="adresseMail" required
-                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
-                <input type="password" placeholder="Mot de passe" [(ngModel)]="model.motDePasse" name="motDePasse"
-                    required class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
-                <input type="date" placeholder="Date de naissance" [(ngModel)]="model.dateNaissance"
-                    name="dateNaissance"
-                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
-                <input type="text" placeholder="Véhicule" [(ngModel)]="model.vehicule" name="vehicule"
-                    class="w-full p-3 rounded-lg bg-gray-800 text-white focus:ring-2 focus:ring-cyan-400" />
-                <button type="submit"
-                    class="w-full py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-bold transition">S'inscrire</button>
-            </form>
+<div class="min-h-screen flex flex-col md:flex-row bg-[#0B0F18]">
+    <!-- Visual hero side -->
+    <div class="relative md:w-1/2 h-72 md:h-auto overflow-hidden">
+        <div ebParallax class="absolute inset-0 hero-bg" style="background-image:url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="hero-overlay"></div>
+        <div class="absolute inset-0 flex flex-col justify-center px-8 text-center md:text-left">
+            <h1 class="text-4xl md:text-5xl font-poppins font-bold mb-6 glow-text">Créez votre compte</h1>
+            <p class="text-white/70 text-lg max-w-md">Gérez bornes, réservations et médias dans une interface futuriste.</p>
         </div>
+    </div>
+    <!-- Form side -->
+    <div class="flex-1 flex items-center justify-center py-14 px-6">
+        <mat-card class="w-full max-w-2xl glass-card">
+            <mat-card-content>
+                <mat-horizontal-stepper #stepper>
+                    <mat-step [stepControl]="step1" label="Identité">
+                        <form [formGroup]="step1" class="grid md:grid-cols-2 gap-4 mt-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Nom</mat-label>
+                                <input matInput formControlName="nom" required />
+                                <mat-error *ngIf="step1.get('nom')?.invalid">Nom requis</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Prénom</mat-label>
+                                <input matInput formControlName="prenom" required />
+                                <mat-error *ngIf="step1.get('prenom')?.invalid">Prénom requis</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="md:col-span-2">
+                                <mat-label>Date de naissance</mat-label>
+                                <input matInput type="date" formControlName="dateNaissance" />
+                            </mat-form-field>
+                            <div class="md:col-span-2 flex justify-end">
+                                <button mat-raised-button color="primary" (click)="stepper.next()" [disabled]="step1.invalid">Suivant</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="step2" label="Compte">
+                        <form [formGroup]="step2" class="grid md:grid-cols-2 gap-4 mt-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Pseudo</mat-label>
+                                <input matInput formControlName="pseudo" required />
+                                <mat-error *ngIf="step2.get('pseudo')?.invalid">Pseudo requis</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Email</mat-label>
+                                <input matInput formControlName="adresseMail" required type="email" />
+                                <mat-error *ngIf="step2.get('adresseMail')?.invalid">Email valide requis</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="md:col-span-2">
+                                <mat-label>Mot de passe</mat-label>
+                                <input matInput formControlName="motDePasse" required type="password" />
+                                <mat-error *ngIf="step2.get('motDePasse')?.invalid">6 caractères minimum</mat-error>
+                            </mat-form-field>
+                            <div class="md:col-span-2 flex justify-between">
+                                <button mat-stroked-button (click)="stepper.previous()">Retour</button>
+                                <button mat-raised-button color="primary" (click)="stepper.next()" [disabled]="step2.invalid">Suivant</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="step3" label="Finalisation">
+                        <form [formGroup]="step3" class="grid md:grid-cols-2 gap-4 mt-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Véhicule</mat-label>
+                                <input matInput formControlName="vehicule" />
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>IBAN</mat-label>
+                                <input matInput formControlName="iban" />
+                            </mat-form-field>
+                            <div class="md:col-span-2 flex justify-between items-center">
+                                <button mat-stroked-button (click)="stepper.previous()">Retour</button>
+                                <button mat-raised-button color="primary" class="hero-cta" (click)="register()" [disabled]="submitting || step3.invalid">{{ submitting ? 'Création…' : 'Créer le compte' }}</button>
+                            </div>
+                            <div *ngIf="error" class="text-red-400 text-sm md:col-span-2">{{ error }}</div>
+                        </form>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

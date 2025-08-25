@@ -3,14 +3,32 @@
     display: block
 }
 
-/* Force white text for the bornes management page */
-:host,
-:host * {
-    color: #fff !important;
+/* Keep host block-level but avoid forcing color globally here.
+   Tailwind utility classes control the visual theme; we only scope
+   specific readable colors for table cells and links used on this page. */
+:host {
+    display: block;
 }
 
-/* Ensure specific table cells keep readable backgrounds if needed */
+/* Ensure table text is visible on dark surfaces while not overriding all nested components */
 .table-wrap table td,
 .table-wrap table th {
-    color: #fff !important;
+    color: inherit;
+    /* allow utility classes or parent theme to decide */
+}
+
+/* Thumbnails styling */
+.table-wrap img {
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Lightbox overrides */
+.gest-bornes-lightbox img {
+    max-height: 70vh;
+}
+
+.media-file-link {
+    display: inline-flex;
+    align-items: center;
 }

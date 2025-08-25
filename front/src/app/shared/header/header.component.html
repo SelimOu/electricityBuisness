@@ -1,30 +1,37 @@
-<header class="h-16 bg-[#071021]/60 backdrop-blur-sm flex items-center px-6 text-white">
-    <div class="flex-1 flex items-center gap-6">
-        <a routerLink="/" class="text-2xl font-semibold text-white">EVCharge</a>
-        <!-- Nav links for authenticated users -->
-        <nav *ngIf="auth.isLogged()" class="hidden md:flex items-center gap-4">
-            <a routerLink="/" class="px-3 py-2 rounded hover:bg-white/5">Tableau de bord</a>
-            <a routerLink="/lieux" class="px-3 py-2 rounded hover:bg-white/5">Mes lieux</a>
-            <a routerLink="/bornes" class="px-3 py-2 rounded hover:bg-white/5">Mes bornes</a>
-            <a routerLink="/carte" class="px-3 py-2 rounded hover:bg-white/5">Carte des bornes</a>
-            <a routerLink="/reservations" class="px-3 py-2 rounded hover:bg-white/5">Mes réservations</a>
+<mat-toolbar color="primary" class="!bg-[#071021]/70 backdrop-blur-xl border-b border-white/10 relative z-20">
+    <div class="flex items-center gap-4 flex-1">
+        <button mat-icon-button class="md:hidden" (click)="toggleSidebar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <a routerLink="/" class="text-2xl font-poppins font-bold tracking-wide glow-text">EVCharge</a>
+        <nav *ngIf="auth.isLogged()" class="hidden md:flex items-center gap-2 text-sm">
+            <a routerLink="/" mat-button>Dashboard</a>
+            <a routerLink="/lieux" mat-button>Lieux</a>
+            <a routerLink="/bornes" mat-button>Bornes</a>
+            <a routerLink="/carte" mat-button>Carte</a>
+            <a routerLink="/reservations" mat-button>Réservations</a>
         </nav>
-        <!-- Nav links for non-authenticated users -->
-        <nav *ngIf="!auth.isLogged()" class="hidden md:flex items-center gap-4">
-            <a routerLink="/inscription" class="px-3 py-2 rounded hover:bg-white/5">S'inscrire</a>
-            <a routerLink="/connexion" class="px-3 py-2 rounded hover:bg-white/5">Connexion</a>
+        <nav *ngIf="!auth.isLogged()" class="hidden md:flex items-center gap-2 text-sm">
+            <a routerLink="/inscription" mat-button>Inscription</a>
+            <a routerLink="/connexion" mat-stroked-button>Connexion</a>
         </nav>
     </div>
-
-    <div class="flex items-center gap-4">
-        <button class="p-2 rounded-md hover:bg-white/5" (click)="theme.toggle()">Thème</button>
-        <div *ngIf="auth.isLogged()" class="flex items-center gap-3">
-            <div class="text-sm text-cyan-300">{{ auth.getPseudoFromToken() || 'Utilisateur' }}</div>
-            <button (click)="logout()" class="px-3 py-1 bg-red-600/30 hover:bg-red-600/40 rounded">Déconnexion</button>
-        </div>
-        <div *ngIf="!auth.isLogged()" class="flex items-center gap-3">
-            <a routerLink="/inscription" class="px-3 py-1 bg-cyan-600 text-black rounded font-semibold">S'inscrire</a>
-            <a routerLink="/connexion" class="px-3 py-1 bg-white/5 rounded">Se connecter</a>
-        </div>
+    <div class="flex items-center gap-2">
+        <button mat-icon-button (click)="theme.toggle()" matTooltip="Basculer thème">
+            <mat-icon>brightness_6</mat-icon>
+        </button>
+        <ng-container *ngIf="auth.isLogged(); else guest">
+            <button mat-button [matMenuTriggerFor]="userMenu" class="font-medium">
+                <mat-icon class="mr-1">account_circle</mat-icon>
+                {{ auth.getPseudoFromToken() || 'Utilisateur' }}
+            </button>
+            <mat-menu #userMenu="matMenu">
+                <button mat-menu-item routerLink="/profil"><mat-icon>settings</mat-icon><span>Profil</span></button>
+                <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon><span>Déconnexion</span></button>
+            </mat-menu>
+        </ng-container>
+        <ng-template #guest>
+            <a mat-raised-button color="primary" routerLink="/inscription" class="hero-cta">S'inscrire</a>
+        </ng-template>
     </div>
-</header>
+</mat-toolbar>

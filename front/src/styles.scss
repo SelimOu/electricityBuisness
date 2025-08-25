@@ -1,0 +1,187 @@
+@use '@angular/material' as mat;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Color palette tokens (2025 premium futuristic)
+$deep: #0B0F18;
+$electric: #00D1FF;
+$neon: #0AFF9D;
+$violet: #7B61FF;
+$text-light: #F5F5F5;
+
+// Angular Material theme configuration
+$primary-palette: mat.define-palette(mat.$cyan-palette, 500, 300, 700);
+$accent-palette: mat.define-palette(mat.$light-green-palette, A400, A200, A700);
+$warn-palette: mat.define-palette(mat.$red-palette);
+$theme: mat.define-dark-theme((color: (primary: $primary-palette,
+                accent: $accent-palette,
+                warn: $warn-palette ),
+            typography: mat.define-typography-config($font-family: 'Inter, Poppins, system-ui')));
+@include mat.all-component-themes($theme);
+
+// Base layer overrides
+@layer base {
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        background: radial-gradient(circle at 20% 20%, rgba(0, 209, 255, 0.08), transparent 60%) $deep;
+        color: $text-light;
+        font-family: 'Inter', 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+        color: $electric;
+        text-decoration: none;
+        transition: color .3s;
+    }
+
+    a:hover {
+        color: $neon;
+    }
+}
+
+// Glass & glow utility components
+@layer components {
+    .glass-card {
+        border-radius: 1rem;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(24px);
+        box-shadow: 0 10px 30px -10px rgba(0, 209, 255, 0.2);
+        transition: all .4s ease;
+    }
+
+    .glass-card:hover {
+        box-shadow: 0 8px 32px -6px rgba(0, 209, 255, 0.45);
+        border-color: rgba(0, 209, 255, 0.4);
+    }
+
+    .neon-btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: .75rem 1.5rem;
+        font-weight: 600;
+        border-radius: 0.75rem;
+        color: #000;
+        background: #00D1FF;
+        transition: all .35s ease;
+        text-shadow: 0 0 6px rgba(0, 0, 0, .4);
+        box-shadow: 0 0 0 0 rgba(0, 209, 255, 0.6), 0 0 20px -5px rgba(0, 209, 255, .6);
+    }
+
+    .neon-btn:hover {
+        background: #4ae7ff;
+        box-shadow: 0 0 8px 2px rgba(0, 209, 255, .9), 0 0 28px -2px rgba(0, 209, 255, .7);
+    }
+
+    .hero-cta {
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    .mat-mdc-card.glass-card {
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+@keyframes floatSlow {
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-8px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 209, 255, .4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(0, 209, 255, 0);
+    }
+}
+
+@layer utilities {
+    .bg-grid-overlay {
+        background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 80px 80px, 80px 80px;
+    }
+
+    .glow-text {
+        text-shadow: 0 0 10px rgba(0, 209, 255, .6);
+    }
+
+    .animate-float {
+        animation: floatSlow 8s ease-in-out infinite;
+    }
+
+    .animate-pulse-glow {
+        animation: pulseGlow 4s linear infinite;
+    }
+
+    .backdrop-glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .parallax-container {
+        perspective: 1px;
+        overflow-x: hidden;
+    }
+}
+
+// Hero section base style (structure shared via component but keep a utility for layering)
+.hero-base {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    min-height: 64vh;
+}
+
+.hero-base .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(11, 15, 24, 0.8), rgba(11, 15, 24, 0.6), rgba(11, 15, 24, 0.9));
+}
+
+.hero-content {
+    position: relative;
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5rem 1.5rem;
+}
+
+// Remove any previous generic button styles (clean slate directive applied via new classes only)

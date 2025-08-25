@@ -13,7 +13,9 @@
         <label>Date fin</label>
         <input type="datetime-local" name="fin" [(ngModel)]="model.fin" (change)="calculatePrice()"
             class="w-full p-2 border rounded" />
-        <div *ngIf="estimatedPrice>0" class="text-lg font-semibold">Prix estimé: {{ estimatedPrice }} €</div>
+        <div *ngIf="estimatedPrice>0" class="text-lg font-semibold" style="color: white;">Prix estimé: {{ estimatedPrice
+            }} €
+        </div>
         <div *ngIf="estimatedPrice===0 && model.debut && model.fin" class="text-red-600">Date de fin doit être après la
             date de début</div>
         <button class="bg-blue-600 text-inverse px-4 py-2 rounded" type="submit"
